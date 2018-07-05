@@ -1,0 +1,104 @@
+#contenido{ 
+	background: white;
+	width: 850px;
+	height:350px;
+	padding: 7% 0px;
+	text-align: justify;
+	clear:both;
+	text-justify: auto; /* auto = algoritmo predefinido del buscador */
+}
+#encabezado{
+	padding: 1% 0px;
+	text-align: left;
+	border:none;
+}
+#total{
+	  float:right;
+	  margin-right:117px;
+}
+
+#items{
+	border-collapse: collapse;
+	display:inline-block;
+	margin-right: 5px;
+
+}
+
+#buscar{ 
+	width: 600px;
+	height:20px;
+	border: none; 
+	display: block;'
+	text-align: left;
+	text-justify: left; /* auto = algoritmo predefinido del buscador */
+	float:right;
+}
+·#paginas{
+	/*opacity: 0.80;	/*efecto de transparencia*/
+	background: white;
+	width: 100%;
+	height:30px;
+	text-align: justify;
+	text-justify: auto; /* auto = algoritmo predefinido del buscador */	
+}
+#cuadro{ 
+	border: none; 
+	display: block;'
+	max-width: 800px;
+	min-height:300px;
+	text-align: left;
+	text-justify: auto; /* auto = algoritmo predefinido del buscador */
+}
+#remove{
+	margin-left: 25px;
+}
+#factura{
+	width: 650px;
+	height:auto;
+	margin-left: 5px;
+}
+#column1{ 
+	width: 400px;
+	height:auto;
+	margin-left: 10px;
+	border: none; 
+	display: block;'
+	text-align: left;
+	text-justify: left; /* auto = algoritmo predefinido del buscador */
+	float:left;
+	}
+#column2{ 
+	width: 400px;
+	height:auto;
+	border: none; 
+	display: block;'
+	text-align: justify;
+	text-justify: center; /* auto = algoritmo predefinido del buscador */
+	float:left;
+}
+#nombre_tabla{
+	margin-top:10px; 
+	margin-left:10px;
+	font-size:20px;
+	font-weight: bold;
+	text-align:left;
+}
+#tabla{
+	margin:auto;
+	border: none; 
+	margin:10px;
+	display: block;'
+	max-width: 848px;
+	min-height:300px;
+	text-align: center;
+	text-justify: center; /* auto = algoritmo predefinido del buscador */ 
+}
+#tabla tr td{ 
+	background: #FFFACD;
+	border: 1px solid #ffffff; 
+	margin:5px;
+	padding:2px;
+	min-height:30px;
+	text-align: center;
+	text-justify: center;
+}

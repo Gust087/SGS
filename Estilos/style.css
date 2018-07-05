@@ -1,0 +1,100 @@
+#usuario{
+   color: white;
+   text-align:right;
+   padding-top:20px;
+   margin-right:20px;
+   }
+#titulo{
+      color:white;
+      font-size:12px;
+      max-width:500px;
+      margin:10px;
+      float:left;
+      min-height:2em;
+    }  
+#entrar{
+	color: white;
+    margin-top:20px;
+	margin-right:10px;
+    max-width:500px;
+    float:right;                                                        
+    }
+#label-reg{
+	border: 15px; 
+	margin-left: 15px;
+	display: block;'
+	padding:15px;
+	min-height:20px; 
+}
+#input-reg{
+	text-align: left;
+	border: 15px; 
+	margin-left: 15px;
+	display: block;'
+	padding:15px;
+	min-height:20px; 
+}
+#label-tbl{
+	border: none; 
+	display: block;'
+	padding:5px;
+}
+#input-tbl{
+    max-width:100px;
+	background: #FFFACD;
+	text-align: center;
+	border: none; 
+	display: block;'
+	padding:5px;
+}
+#input{
+       width:130px;
+       border-radius:3px;
+       margin-right:10px;
+	   height:25px;
+       border:solid 1px #0CF;                                
+}
+#input:focus{
+        box-shadow:0 0 5px #0CF;
+        border:solid 1px #0CF;
+}
+#input-fact{
+	margin:5px;
+	margin-left: 15px;
+	border: 15px; 
+	padding:2px;
+	min-height:20px; 
+	text-align: left;
+    text-justify: left;
+}
+input[type=number] {
+   width: 75px;
+}
+#input-entrar:hover{
+        border:solid 1px #0CF;
+}
+#sector_button{
+	  float:right;
+	  margin-right:10px;
+	  margin-bottom:10px;
+}
+#button{
+       width:100px;
+       border-radius:3px;
+       margin-right:10px;
+	   margin-bottom:10px;
+       height:25px;
+       border:solid 1px #0CF;
+      }
+#button:hover{
+		color:white;
+		background:#0CF;	  
+}
+#sector_button{
+	   margin-right:10px;
+	   margin-bottom:10px;
+       height:25px;
+       float:right;	
+	   padding: 10px;
+}
+         

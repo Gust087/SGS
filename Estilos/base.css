@@ -1,0 +1,63 @@
+*{	
+	margin:0px;  
+    padding:0px;  
+}
+body {  
+    background: #FAFAFA;
+    position:absolute;  
+    left: 50%;  
+    margin-left:-500px;  
+	text-align: center;
+    }  
+/*modificaremos nuestra portada* etiqueta <header> */
+header{
+    background: #088A08;
+	min-width:1000px; /*Este es el tamaño de nuestra página*/  
+    height:80px;  
+	margin:0px; 
+    border-bottom:solid 1px #0CF;                        
+    max-width:100%;
+    text-align:right;
+    }
+#navegacion {  
+	background: white;
+    border-bottom:solid 1px #0CF;
+	min-height:50px;
+    text-align:right;
+	}  
+#columna {  
+    height:auto;  
+	width: 150px;
+	border-right:solid 1px #088A08;
+	min-height:500px;
+	background: white;
+	float: left;
+    display:inline-block;/*con esta propiedad logramos que section se  
+    adapte a su contenido por mas de que usemos la propiedad float 
+    en las capaz interiores*/} 
+#seccion{  
+    height:auto;  
+	min-width: 850px;
+	min-height:500px;
+	background: white;  
+    float:left;/*combinando el float de columna y seccion conseguimos que la capa se coloque al lado*/   
+	display:inline-block;
+	clear:right; /*right: evita que una capa flote a la derecha*/
+
+    }  
+#pie{
+     border-top:solid 1px #0CF;
+     position:fixed;
+     bottom:0px;
+     min-width:1000px;  
+     height:50px;  
+     font-size:12px;
+     text-align:center;
+     color:blue;
+     background: white;
+	 float: center;
+	 clear:both;
+	/*background: #055a8f;  Old browsers 
+     background: -moz-linear-gradient(top,  #F8F8F8 0%, #FFF 0%, #DADADA 100%);
+     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#DADADA), color-stop(0%,#FFF), color-stop(100%,#055a8f)); */
+	}

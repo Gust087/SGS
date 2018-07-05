@@ -1,0 +1,90 @@
+#menu_busqueda{
+  width: 200px;
+  font-family: Arial;
+  font: oblique bold 100%; 
+  font-size:1.8em;
+  text-align:center;
+}
+#menu, #menu_lat {
+  margin-top:7px;
+  float: right;
+  width: 100%;
+  font-family: Arial;
+  font: oblique bold 100%; 
+  font-size:1.3em;
+}
+a#link {
+	text-decoration:none; 
+	color:black;
+}
+img#icon{
+	width:20px;
+	height:20px;
+}
+#menu li {
+   float:right;       
+   position:relative;       
+   list-style-type:none;
+ /*  margin: -4px 0px 0px 0px;*/
+
+}
+
+#menu_lat li {       
+   position:relative;       
+   list-style-type:none;
+ /*  margin: -4px 0px 0px 0px;*/
+}
+#menu_busqueda li {       
+   position:relative;       
+   list-style-type:none;
+}
+#menu a {      
+  display:block;        
+  text-decoration:none; 
+  margin-right:30px;
+  padding: 4px 10px;      
+  background: white;
+  color: black;
+}
+
+#menu_lat a {
+  display:block;        
+  text-decoration:none;
+  margin-top: 18px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 3px;      
+  background: white;
+  color: black;
+}
+#menu_busqueda a {
+  display:block;        
+  text-decoration:none;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 8px;
+  color: white;
+  background: #088A08; 
+  border-radius:40px;
+
+}
+
+#menu a:hover {
+  color: white;
+  background: #088A08;
+  border-radius:50px;
+}
+
+#menu_lat a:hover {
+  color: white;
+  background: #088A08; 
+  border-radius:40px;
+}
+#menu_busqueda a:hover {
+  color: gray;    
+  border-style: solid;
+  border-color: green;
+  background: white; 
+  border-radius:40px;
+}
