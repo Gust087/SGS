@@ -1,0 +1,163 @@
+<?php
+require '../conexion.php';
+
+ob_start();
+?>
+ <page backtop="30mm" backbottom="20mm" backleft="10mm" backright="10mm"> 
+
+<?php 
+
+require '../select.php';
+require '../conexion.php';
+
+$id_detalle_vta = $ult_det;
+
+$row_fact_vta = $row_ult_egr;
+$numero_f = $row_fact_vta['num_fact'];
+$tipo_f = $row_fact_vta['tipo_fact'];
+//$membrete = $row_fact_vta['id_membrete'];
+$id_cliente = $row_fact_vta['id_client'];
+$forma_pago = $row_fact_vta['forma_pago'];
+$fecha = $row_fact_vta['fecha'];
+$total = $row_fact_vta['total'];
+
+$Client_qry = "Select * FROM cliente WHERE id_client = ".$id_cliente."";
+$Cliente = mysqli_query($conexion, $Client_qry) or die(mysqli_error($conexion). " Query: " . $Client_qry);
+
+$row_client = mysqli_fetch_array($Cliente);
+$nombre = $row_client['nombre'];
+$apellido = $row_client['apellido'];
+$ciudad = $row_client['ciudad'];
+$direccion = $row_client['direccion'];
+$documento = $row_client['documento'];
+$telefono = $row_client['telefono'];
+$celular = $row_client['celular'];
+$email = $row_client['email'];
+
+?>
+      <page_header> 
+           Page header
+      </page_header> 
+      <page_footer> 
+           Page footer
+      </page_footer> 
+      Page Content
+
+<nobreak>
+<?php
+echo'
+<!DOCTYPE HTML>
+<html lang="es">
+<body style="widht: 650px;">
+	<legend id="nombre_tabla">Factura</legend>
+	<label align="right" style="margin-right:30%"><b>Tipo Fact.:</b>
+	<input id="input-fact" name="fact" type="text"/></label>
+	<fieldset id="encabezado">
+		<div style="margin-left:10px; padding-left:20px; border: 1px solid; width:580px;" >
+		<table>
+                <tr>
+                    <td><b>Factura #:</b></td>
+					<td><input id="input-fact" name="nro_fact" type="number" value='.$num_fact.' /></td>
+					<td><b>Pago:</b></td>
+					<td></td>
+					<td align="right"><b>Fecha:</b></td>
+					<td align="right"><input id="input-fact" type="date" name="fecha" min="1" max="10" required /></td>
+				</tr>
+		</table>
+		</div>
+		<div id="column1">
+		<table>
+                <tr>
+                    <td style="margin-left:15px"><b>Cliente:</b></td>
+				</tr>
+				<tr>
+					<td style="margin-left:15px"><b>DNI:</b></td>
+					<td><input id="input-fact" name="DNI" type="number" /></td>
+				</tr>
+		</table>
+		</div>
+		<div id="column2">
+		<table>
+                <tr>
+                    <td style="margin-left:15px"><b>Direccion:</b></td>
+					<td><input id="input-fact" name="dir" type="text" /></td>
+				</tr>
+				<tr>
+					<td style="margin-left:15px"><b>Telefono:</b></td>
+					<td><input id="input-fact" name="tel" type="number" /></td>
+				</tr>
+				<tr>
+					<td><b>Monto a pagar: </b></td>
+                    <td><div id="total"><input id="balance" name="balance" type="number" /></div></td>
+                </tr>
+
+		</table>
+		</div>
+	</fieldset>
+	<fieldset id="factura">
+			
+		<input style="margin-left:3px;"  id="codigo" name="itemsCod" type="number" />
+
+		<input id="nombre" name="itemsNom" type="text"/>
+	
+		<input id="marca" name="itemsMark" type="text"/>
+		
+		<input id="p_c" name="itemsPC" type="number" />
+		
+		<input id="cant" name="itemsCant" type="number" />
+	
+		<input id="subtotal" name="itemsSubt" type="number" />
+		
+		<div id="cargarItems"></div>
+	</fieldset>
+				
+			<table cellpadding="40px" cellspacing="5px" align="center" border="none" width="400px">
+						<tbody align="center">
+							<tr  style=" background: #FFFACD;">
+								<td><b>Codigo</b></td>
+								<td><b>Nombre</b></td>	
+								<td><b>Marca</b></td>
+								<td><b>Modelo</b></td>
+								<td><b>Precio Cpra</b></td>
+								<td><b>Precio Vta</b></td>
+								<td><b>Stock</b></td>
+								<td><b>Descripcion</b></td>
+								<td><b>Max</b></td>
+								<td><b>Min</b></td>				
+							</tr>';
+				
+			$result = mysqli_query($conexion, "SELECT * FROM producto");
+				while($row=mysqli_fetch_array($result)){
+				  echo" <tr style=' background: #FFFACD;'>";
+					echo"		<td>".$row['codigo']."</td>";
+					echo"		<td>".$row['nombre']."</td>";
+					echo"		<td>".$row['marca']."</td>";
+					echo"		<td>".$row['modelo']."</td>";
+					echo"		<td>".$row['precio_cpra']."</td>";
+					echo"		<td>".$row['precio_vta']."</td>";
+					echo"		<td>".$row['existencia']."</td>";
+					echo"		<td>".$row['descripcion']."</td>";
+					echo"		<td>".$row['max']."</td>";
+					echo"		<td>".$row['min']."</td>";
+				echo"	</tr>";}
+			echo "  </tbody>";
+			echo '</table>
+
+</body>
+</html>';
+	?>
+	</nobreak>
+  </page> 
+<?php
+
+	$contenido = ob_get_clean();
+	require_once('../html2pdf/html2pdf.class.php');
+	$pdf = new HTML2PDF('P', 'A4', 'fr', 'UTF-8');
+	$pdf->writeHTML($contenido);
+	$pdf->pdf->IncludeJS('print(TRUE)');
+	//$pdf->Output('Report_client.pdf', 'I');
+	//$pdf->Output('Report_client.pdf', 'D');
+	$pdf->Output('Report_client.pdf', 'P');
+mysqli_close($conexion);
+
+?> 
