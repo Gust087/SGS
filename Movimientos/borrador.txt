@@ -1,0 +1,448 @@
+<?php
+        
+	require "C:\wamp\www\SGS\conexion.php";     
+	   $result = mysqli_query($conexion, "SELECT * FROM producto");
+	   $row=mysqli_fetch_array($result);	
+	   
+	   $arrayphp= array();
+	   $i=0;
+	   while($row=mysqli_fetch_array($result)){
+		$arrayphp [$i] = array(10);
+		$arrayphp [$i][0] = $row['codigo'];
+		$arrayphp [$i][1] = $row['nombre'];
+		$arrayphp [$i][2] = $row['marca'];
+		$arrayphp [$i][3] = $row['modelo'];
+		$arrayphp [$i][4] = $row['precio_cpra'];
+		$arrayphp [$i][5] = $row['precio_vta'];
+		$arrayphp [$i][6] = $row['existencia'];
+		$arrayphp [$i][7] = $row['descripcion'];
+		$arrayphp [$i][8] = $row['max'];
+		$arrayphp [$i][9] = $row['min'];
+		$i++;
+		}
+	?>	
+	
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+<script language="javascript"  type="text/javascript">
+var registros = <?php echo json_encode($arrayphp); ?>;
+		
+function popUp() {
+	var ventana=window.open( "", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=50, width=600, height=300");
+		
+       
+	ventana.document.write("<table width=550 border=1 cellpadding=1 cellspacing=1>"); 
+	if(typeof(registros) != "undefined"){ 
+		for (i=0;i<registros.length;i++){ 
+			ventana.document.write("<tr>") 
+		 //  	ventana.document.write("<td><b>Ciudad " + i + "</b></td>") 
+			for (j=0;j<registros[i].length;j++){ 
+				 ventana.document.write("<td>" + registros[i][j] + "</td>"); 
+				} 
+			ventana.document.write("</tr>"); 
+			} 
+		ventana.document.write("</table>");		
+	}else{ alert("No existen registros."); }
+	}
+
+
+function crearTabla() {
+// aqui incluiremos el código
+	miTabla = document.createElement("table");
+	tbBody = document.createElement("tbody");
+	tr = document.createElement("tr");
+	td1 = document.createElement("td");
+	td2 = document.createElement("td");
+	td3 = document.createElement("td");
+// atributos para la tabla
+	miTabla.setAttribute("width", "300px");
+	miTabla.setAttribute("border", "1");
+	miTabla.setAttribute("id", "tabla");
+	miTabla.setAttribute("name", "tabla");
+	
+// atributos para la primera celda
+	td1.setAttribute("align", "center");
+	td1.setAttribute("width", "200px");
+// atributos para la segunda celda
+	td2.setAttribute("width", "100px");
+
+	td1.innerHTML = "Celda 1";
+	td2.innerHTML = "Celda 2";
+
+	
+	
+	var boton = document.createElement("input");
+	boton.setAttribute('type', 'button');
+	boton.setAttribute('name', "boton");
+	boton.setAttribute('value', "pulsame");
+	var funcion = "popUp()";
+
+	var gko = navigator.userAgent.toLowerCase();
+	if (gko.indexOf('gecko')!=-1) {
+		boton.setAttribute('onclick',funcion);
+	} else {
+		boton['onclick']=new Function(funcion);
+	}
+	td3.appendChild(boton);
+
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	tr.appendChild(td3);
+	tbBody.appendChild(tr);
+	miTabla.appendChild(tbBody);
+
+	miCapa = document.getElementById('resultado');
+	miCapa.appendChild(miTabla);
+
+}
+
+</script>
+</head>
+<body onload="crearTabla();">
+<div id="resultado"></div>			
+</body>
+</html>
+
+
+function datos(this){
+/*
+rellenarPrecio(p_c);
+
+ventana.document.write("<table width=500 border=1 cellpadding=1 cellspacing=1>"); 
+	if(typeof(registros) != "undefined"){ 
+		for (i=0;i<registros.length;i++){ 
+			ventana.document.write("<tr>") 
+			for (j=0;j<registros[i].length;j++){ 
+				 ventana.document.write("<td>" + registros[i][j] + "</td>"); 
+				} 
+			ventana.document.write("</tr>"); 
+			} 
+		ventana.document.write("</table>");		
+		
+		ventana.document.write("<form method='POST' action='index.php?pagina=nvo_ingreso' name='formulario' >"); 
+		ventana.document.write("<fieldset id='cuadro'>");
+		ventana.document.write("<div id='column1'>");
+		ventana.document.write("<label id='label'><b>Cantidad:</b>");
+		ventana.document.write("<input id='input-reg' name='cant' type='text' required autofocus></label>");
+		ventana.document.write("<label id='label'><b>Costo Unitario:</b>");
+		ventana.document.write("<input id='input-reg' name='p_c' type='text' required ></label>");
+		ventana.document.write("</div>");		
+		ventana.document.write("<div id='column2'>");
+		ventana.document.write("<label id='label'><b>Total a Pagar:</b>");
+		ventana.document.write("<input id='input-reg' name='total' type='text'></label>");
+		ventana.document.write("</div>");
+		ventana.document.write("</fieldset>");
+
+		}else{ alert("No existen registros."); }
+	*/}
+function crearTabla() {
+// aqui incluiremos el código
+	miTabla = document.createElement("table");
+	
+	tbBody = document.createElement("tbody");
+	
+	tr = document.createElement("tr");
+	td1 = document.createElement("td");
+	td2 = document.createElement("td");
+	td3 = document.createElement("td");
+
+// atributos para la tabla
+	miTabla.setAttribute("width", "300px");
+	miTabla.setAttribute("border", "1");
+
+// atributos para la primera celda
+	td1.setAttribute("align", "center");
+	td1.setAttribute("width", "200px");
+// atributos para la segunda celda
+	td2.setAttribute("width", "100px");
+
+	td1.innerHTML = "Celda 1";
+	td2.innerHTML = "Celda 2";
+
+	
+	
+	var boton = document.createElement("input");
+	boton.setAttribute('type', 'button');
+	boton.setAttribute('name', "boton");
+	boton.setAttribute('value', "pulsame");
+	var funcion = "popUp()";
+
+	var gko = navigator.userAgent.toLowerCase();
+	if (gko.indexOf('gecko')!=-1) {
+		boton.setAttribute('onclick',funcion);
+	} else {
+		boton['onclick']=new Function(funcion);
+	}
+	td3.appendChild(boton);
+
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	tr.appendChild(td3);
+	tbBody.appendChild(tr);
+	miTabla.appendChild(tbBody);
+
+	miCapa = document.getElementById('resultado');
+	miCapa.appendChild(miTabla);
+
+}
+
+
+
+
+
+		var registros = [
+		<?php while($row=mysqli_fetch_array($result)){
+			echo "  '[".$row['codigo']."'";
+			
+			echo "	',' '".$row['nombre']."'";
+			
+			echo "	',' '".$row['marca']."'";
+			
+			echo "	',' '".$row['modelo']."'";
+			
+			echo "	',' '".$row['precio_cpra']."'";
+			
+			echo "	',' '".$row['precio_vta']."'";
+			
+			echo "	',' '".$row['existencia']."'";
+			
+			echo "	',' '".$row['descripcion']."'";
+			
+			echo "	',' '".$row['max']."'";
+			
+			echo "	',' '".$row['min']."],' ";
+			$i++;	
+		}		
+	   ?>];
+ function datosTextos() {
+var textos = '';
+for (var i=1;i<document.getElementById('tbl').rows.length;i ++){
+for (var j=0;j<=4;j++){
+if (j==4){
+textos = textos + document.getElementById('tbl').rows[i].cells[j].innerHTML;
+}else{
+textos = textos + document.getElementById('tbl').rows[i].cells[j].innerHTML + '-';
+}
+}
+textos = textos + '/';
+}
+alert(textos);
+
+return textos;
+}
+
+$cadena=textos; // obviamente textos lo envias mediante post o get y lo recogesy lo almacenos en la variable $cadena.
+
+$partes = explode("/",$cadena); // divide una cadena según separador
+array_pop($partes); // elimina el ultimo elemento del array
+
+y ahi ya tienen toda la base de datos en arreglos divididos por filas para poderlos meter en la base de datos...
+
+Ahora el código para meterlo en la base de datos: (Ahi viene).
+
+
+for($i=0;$i<=(count($partes)-1);$i++){
+$subpartes = explode("-",($partes[$i]));
+
+if(count($subpartes)==5)
+$coma=" , ";
+
+if($subpartes[2]=="Si")
+$subpartes[2]="NOT NULL";
+else
+$subpartes[2]="";
+
+if($subpartes[4]=="Si")
+$subpartes[4]="AUTO_INCREMENT";
+else
+$subpartes[4]="";
+
+$sql="create table ".$_GET['bdd']." ( ";
+$var.=$subpartes[0]." ".$subpartes[1]." (".$subpartes[3].") ".$subpartes[2]." ".$subpartes[4].$coma;
+
+
+
+if ($i==(count($partes)-1)){ //con esto borras la ultima coma y pones el ultimo parentesis, eso es
+$var = substr ($var, 0, -2); // cuando hay muxas filas con registros.
+$var.=" )"; //
+
+}
+
+}
+
+$sqlTotal=$sql.$var; //ahi tienen el sql para enviarlo
+
+obviamente lo q yo hago aca creo una tabla nueva con los datos q vienen desde una tabla dinamica de javascrpit para guardarlos .. los grabo en una bdd de mysql utilizando PHP
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+//...
+          require '../conexion.php';
+	   $result = mysqli_query($conexion, "SELECT * FROM producto");
+	   $row=mysqli_fetch_array($result);
+
+	   //...
+?>
+
+<script type="text/javascript">
+//<a href="/index.htm" target="popup" onClick="window.open(this.href, this.target, 'width=300,height=400'); return false;">Lanzar correctamente</a>
+switch ($x){ 
+					case 0:
+						break;
+					case 1:
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+					case 4:
+						break;
+					case 5:
+						break;
+					case 6:
+						break;
+				}
+			
+	for($x=0; 6<$x; $x++){
+
+	function popUp() {
+		window.open("", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=50, width=600, height=300");
+
+		var registros = new Array();
+       <?php
+		$i = 0;		
+		while($row=mysqli_fetch_array($result)){
+		
+			echo 'registros ['.$i.'] = new Array(10)';
+			
+			echo 'registros	['. $i .'] [0] = '.$row['codigo'] .';\n';
+			$i++;
+			echo 'registros	['. $i .'] [1] = '.$row['nombre'] .';\n';
+			$i++;
+			echo 'registros	['. $i .'] [2] = '.$row['marca'] .';\n';
+			$i++;
+			echo 'registros	['. $i .'] [3] = '.$row['modelo'] .';\n';
+			$i++;
+			echo 'registros	['. $i .'] [4] = '.$row['precio_cpra'] .';\n';
+			$i++;
+			echo 'registros	['. $i .'] [5] = '.$row['precio_vta'] .';\n';
+			$i++;
+			echo 'registros	['. $i .'] [6] = '.$row['existencia'] .';\n';
+			$i++;
+			echo 'registros	['. $i .'] [7] = '.$row['descripcion'] .';\n';
+			$i++;
+			echo 'registros	['. $i .'] [8] = '.$row['max'] .';\n';
+			$i++;
+			echo 'registros	['. $i .'] [9] = '.$row['min'] .';\n';
+			$i++;	
+		}
+	   ?>
+
+document.write("<table width=200 border=1 cellpadding=1 cellspacing=1>"); 
+for (i=0;i<registros.length;i++){ 
+   	document.write("<tr>") 
+ //  	document.write("<td><b>Ciudad " + i + "</b></td>") 
+   	for (j=0;j<registros[i].length;j++){ 
+      	 document.write("<td>" + registros[i][j] + "</td>") 
+   	} 
+   	document.write("</tr>") 
+} 
+document.write("</table>")
+</script>
+<html>
+<head>
+<script type="text/javascript">
+
+function crearTabla() {
+// aqui incluiremos el código
+miTabla = document.createElement("table");
+tbBody = document.createElement("tbody");
+tr = document.createElement("tr");
+td1 = document.createElement("td");
+td2 = document.createElement("td");
+td3 = document.createElement("td");
+// atributos para la tabla
+miTabla.setAttribute("width", "300px");
+miTabla.setAttribute("border", "1");
+// atributos para la primera celda
+td1.setAttribute("align", "center");
+td1.setAttribute("width", "200px");
+// atributos para la segunda celda
+td2.setAttribute("width", "100px");
+
+td1.innerHTML = "Celda 1";
+td2.innerHTML = "Celda 2";
+
+var boton = document.createElement("input");
+boton.setAttribute('type', 'button');
+boton.setAttribute('name', "boton");
+boton.setAttribute('value', "pulsame");
+var funcion = "alert('hola')";
+
+var gko = navigator.userAgent.toLowerCase();
+if (gko.indexOf('gecko')!=-1) {
+boton.setAttribute('onclick',funcion);
+} else {
+boton['onclick']=new Function(funcion);
+}
+td3.appendChild(boton);
+
+tr.appendChild(td1);
+tr.appendChild(td2);
+tr.appendChild(td3);
+tbBody.appendChild(tr);
+miTabla.appendChild(tbBody);
+
+miCapa = document.getElementById('resultado');
+miCapa.appendChild(miTabla);
+
+}
+
+
+</script>
+</head>
+<body onload="crearTabla();">
+<div id="resultado"></div>
+</body>
+</html>
+
+
+
+
+
+
+var tabla = '<table>'
+ 
+document.getElementById('numerof').innerHTML = num;
+//document.getElementById('tablas').innerHTML = tabla;
+ 
+while (i<10)
+{
+ 
+ 
+ tabla += '<tr><td>'+i+'</td><td>x</td>'
++'<td>'+num+'</td><td> =</td><td>'+(num*i)+'</td></tr>';
+ 
+ 
+i=i+1;
+}
+ 
+tabla += '</table>'
+document.getElementById('tablas').innerHTML = tabla; 
+    
+ 
+ 
+}
+	}
